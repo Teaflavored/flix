@@ -14,6 +14,7 @@
 		096490B21F68FF1800B20008 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096490B01F68FF1800B20008 /* LaunchScreen.storyboard */; };
 		096490BD1F68FF1900B20008 /* flixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096490BC1F68FF1900B20008 /* flixTests.swift */; };
 		096490C81F68FF1900B20008 /* flixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096490C71F68FF1900B20008 /* flixUITests.swift */; };
+		096490D61F68FFA100B20008 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096490D51F68FFA100B20008 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		096490C31F68FF1900B20008 /* flixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = flixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		096490C71F68FF1900B20008 /* flixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flixUITests.swift; sourceTree = "<group>"; };
 		096490C91F68FF1900B20008 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		096490D51F68FFA100B20008 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				096490A71F68FF1800B20008 /* AppDelegate.swift */,
 				096490A91F68FF1800B20008 /* ViewController.swift */,
 				096490AB1F68FF1800B20008 /* Main.storyboard */,
+				096490D51F68FFA100B20008 /* File.swift */,
 				096490AE1F68FF1800B20008 /* Assets.xcassets */,
 				096490B01F68FF1800B20008 /* LaunchScreen.storyboard */,
 				096490B31F68FF1800B20008 /* Info.plist */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				096490AA1F68FF1800B20008 /* ViewController.swift in Sources */,
+				096490D61F68FFA100B20008 /* File.swift in Sources */,
 				096490A81F68FF1800B20008 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,7 +422,7 @@
 				DEVELOPMENT_TEAM = 794UNRDLGL;
 				INFOPLIST_FILE = flix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = teaflavored.flix;
+				PRODUCT_BUNDLE_IDENTIFIER = teaflavored.flixapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -431,7 +435,7 @@
 				DEVELOPMENT_TEAM = 794UNRDLGL;
 				INFOPLIST_FILE = flix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = teaflavored.flix;
+				PRODUCT_BUNDLE_IDENTIFIER = teaflavored.flixapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
