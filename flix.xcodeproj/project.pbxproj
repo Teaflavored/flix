@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		094CAEBD1F6902E500A45AF7 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CAEBC1F6902E500A45AF7 /* Movie.swift */; };
+		094CAEC11F690F6700A45AF7 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CAEC01F690F6700A45AF7 /* MovieTableViewCell.swift */; };
 		096490A81F68FF1800B20008 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096490A71F68FF1800B20008 /* AppDelegate.swift */; };
 		096490AA1F68FF1800B20008 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096490A91F68FF1800B20008 /* ViewController.swift */; };
 		096490AD1F68FF1800B20008 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096490AB1F68FF1800B20008 /* Main.storyboard */; };
@@ -14,7 +16,6 @@
 		096490B21F68FF1800B20008 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096490B01F68FF1800B20008 /* LaunchScreen.storyboard */; };
 		096490BD1F68FF1900B20008 /* flixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096490BC1F68FF1900B20008 /* flixTests.swift */; };
 		096490C81F68FF1900B20008 /* flixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096490C71F68FF1900B20008 /* flixUITests.swift */; };
-		096490D61F68FFA100B20008 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096490D51F68FFA100B20008 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		094CAEBC1F6902E500A45AF7 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		094CAEC01F690F6700A45AF7 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		096490A41F68FF1800B20008 /* flix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		096490A71F68FF1800B20008 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		096490A91F68FF1800B20008 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +51,6 @@
 		096490C31F68FF1900B20008 /* flixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = flixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		096490C71F68FF1900B20008 /* flixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flixUITests.swift; sourceTree = "<group>"; };
 		096490C91F68FF1900B20008 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		096490D51F68FFA100B20008 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +104,11 @@
 				096490A71F68FF1800B20008 /* AppDelegate.swift */,
 				096490A91F68FF1800B20008 /* ViewController.swift */,
 				096490AB1F68FF1800B20008 /* Main.storyboard */,
-				096490D51F68FFA100B20008 /* File.swift */,
 				096490AE1F68FF1800B20008 /* Assets.xcassets */,
 				096490B01F68FF1800B20008 /* LaunchScreen.storyboard */,
 				096490B31F68FF1800B20008 /* Info.plist */,
+				094CAEBC1F6902E500A45AF7 /* Movie.swift */,
+				094CAEC01F690F6700A45AF7 /* MovieTableViewCell.swift */,
 			);
 			path = flix;
 			sourceTree = "<group>";
@@ -266,8 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				096490AA1F68FF1800B20008 /* ViewController.swift in Sources */,
-				096490D61F68FFA100B20008 /* File.swift in Sources */,
 				096490A81F68FF1800B20008 /* AppDelegate.swift in Sources */,
+				094CAEC11F690F6700A45AF7 /* MovieTableViewCell.swift in Sources */,
+				094CAEBD1F6902E500A45AF7 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +522,7 @@
 				096490CE1F68FF1900B20008 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		096490CF1F68FF1900B20008 /* Build configuration list for PBXNativeTarget "flixTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +531,7 @@
 				096490D11F68FF1900B20008 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		096490D21F68FF1900B20008 /* Build configuration list for PBXNativeTarget "flixUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +540,7 @@
 				096490D41F68FF1900B20008 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
