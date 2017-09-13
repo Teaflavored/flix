@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class ViewController: UIViewController,
 UITableViewDataSource,
@@ -45,8 +46,8 @@ UITableViewDelegate {
             movieCell.overviewLabel.text = overview
         }
 
-        if let posterImageUrl = movies[indexPath.row].getImageUrl() {
-            print(posterImageUrl)
+        if let posterImageUrl = movies[indexPath.row].getPosterImageUrl() {
+            movieCell.posterView.setImageWith(posterImageUrl)
         }
 
         return movieCell

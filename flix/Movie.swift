@@ -23,9 +23,9 @@ class Movie {
         posterPath = config["poster_path"] as? String
     }
 
-    func getImageUrl() -> String? {
+    func getPosterImageUrl() -> URL? {
         if let _posterPath = posterPath {
-            return "\(BASE_IMAGE_URL)\(_posterPath)"
+            return URL(string: "\(BASE_IMAGE_URL)\(_posterPath)")
         }
         
         return nil
