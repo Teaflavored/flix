@@ -37,19 +37,7 @@ UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieTableViewCell
-
-        if let title =  movies[indexPath.row].title {
-            movieCell.titleLabel.text = title
-        }
-
-        if let overview = movies[indexPath.row].overview {
-            movieCell.overviewLabel.text = overview
-        }
-
-        if let posterImageUrl = movies[indexPath.row].getPosterImageUrl() {
-            movieCell.posterView.setImageWith(posterImageUrl)
-        }
-
+        movieCell.updateCellContentWithMovie(movie: movies[indexPath.row])
         return movieCell
     }
 }

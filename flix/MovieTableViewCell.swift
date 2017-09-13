@@ -25,4 +25,24 @@ class MovieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func updateCellContentWithMovie(movie: Movie) {
+        if let title =  movie.title {
+            titleLabel.text = title
+        } else {
+            titleLabel.text = "No Working Title"
+        }
+
+        if let overview = movie.overview {
+            overviewLabel.text = overview
+        } else {
+            overviewLabel.text = "No Summary"
+        }
+
+        if let posterImageUrl = movie.getPosterImageUrl() {
+            posterView.setImageWith(posterImageUrl)
+        } else {
+            posterView.image = nil
+        }
+
+    }
 }
