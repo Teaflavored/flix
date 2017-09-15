@@ -31,9 +31,10 @@ class Movie {
         return nil
     }
 
-    class func fetchMovies(successCallBack: @escaping ([Movie]) -> (), _ errorCallBack: ((Error?) -> ())?) {
+    class func fetchMovies(_ endpoint: String, successCallBack: @escaping ([Movie]) -> (), _ errorCallBack: ((Error?) -> ())?) {
         let apiKey = "cd4e181e550bd1b9eb536ae2fd16907b"
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")!
+        print(url)
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in

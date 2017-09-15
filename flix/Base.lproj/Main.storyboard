@@ -132,7 +132,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Rjq-5s-IGZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dsN-ub-TVT" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FlixNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="dsN-ub-TVT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lU1-do-em0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

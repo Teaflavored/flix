@@ -18,6 +18,7 @@ UITableViewDelegate {
     var content = VHUDContent(.loop(3.0))
 
     var movies: [Movie] = []
+    var endpoint: String = "now_playing"
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -26,7 +27,6 @@ UITableViewDelegate {
 
         // Setting up loader
         content.loadingText =  "Loading..."
-        content.completionText = "Finish!"
         content.shape = .circle
         content.background = .color(#colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9568627451, alpha: 0.7))
         content.style = .light
@@ -50,7 +50,7 @@ UITableViewDelegate {
 
     func fetchMovies() -> Void {
         VHUD.show(content)
-        Movie.fetchMovies(successCallBack: {
+        Movie.fetchMovies(endpoint, successCallBack: {
             (movies: [Movie]) -> Void in
             self.movies = movies
             self.tableView.reloadData()
