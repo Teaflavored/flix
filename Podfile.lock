@@ -14,13 +14,16 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - VHUD (1.1.1)
 
 DEPENDENCIES:
   - AFNetworking
+  - VHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  VHUD: b6b61b6a2aa3825af0f47d956194a210c5e68633
 
-PODFILE CHECKSUM: 04606720c6c6d0565f8abf4fc7b640d69b5060e3
+PODFILE CHECKSUM: fee311c9ab8ed14de28946796c2aff3bbc7aad1f
 
 COCOAPODS: 1.3.1

@@ -7,6 +7,7 @@ target 'flix' do
 
   # Pods for flix
   pod "AFNetworking"
+  pod "VHUD"
 
   target 'flixTests' do
     inherit! :search_paths

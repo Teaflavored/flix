@@ -8,25 +8,35 @@
 
 import UIKit
 import AFNetworking
+import VHUD
 
 class FlixViewController: UIViewController,
     UITableViewDataSource,
 UITableViewDelegate {
     
     let refreshControl = UIRefreshControl()
+    var content = VHUDContent(.loop(3.0))
+
     var movies: [Movie] = []
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        // Setting up loader
+        content.loadingText =  "Loading..."
+        content.completionText = "Finish!"
+        content.shape = .circle
+        content.background = .color(#colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9568627451, alpha: 0.7))
+        content.style = .light
+
+        // Setting up pull to refresh
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
-        Movie.fetchMovies(successCallBack: {
-            (movies: [Movie]) -> Void in
-            self.movies = movies
-            self.tableView.reloadData()
-        }, nil)
+
+        // Initial movie fetch
+        fetchMovies()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,11 +45,17 @@ UITableViewDelegate {
     }
 
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        fetchMovies()
+    }
+
+    func fetchMovies() -> Void {
+        VHUD.show(content)
         Movie.fetchMovies(successCallBack: {
             (movies: [Movie]) -> Void in
             self.movies = movies
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
+            VHUD.dismiss(1.0)
         }, nil)
     }
     
