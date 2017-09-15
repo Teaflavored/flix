@@ -11,6 +11,8 @@ import UIKit
 class MovieDetailsViewController: UIViewController {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var overviewLabel: UILabel!
     
     var movie: Movie!
 
@@ -21,6 +23,14 @@ class MovieDetailsViewController: UIViewController {
             backgroundImageView.setImageWith(posterImageUrl)
         } else {
             backgroundImageView.image = nil
+        }
+
+        if let title = movie.title {
+            titleLabel.text = title
+        }
+
+        if let overview = movie.overview {
+            overviewLabel.text = overview
         }
     }
 
