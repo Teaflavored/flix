@@ -13,22 +13,34 @@ class FlixViewController: UIViewController,
     UITableViewDataSource,
 UITableViewDelegate {
     
+    let refreshControl = UIRefreshControl()
     var movies: [Movie] = []
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
         Movie.fetchMovies(successCallBack: {
             (movies: [Movie]) -> Void in
             self.movies = movies
             self.tableView.reloadData()
-        }, errorCallBack: nil)
+        }, nil)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        Movie.fetchMovies(successCallBack: {
+            (movies: [Movie]) -> Void in
+            self.movies = movies
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }, nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -31,7 +31,7 @@ class Movie {
         return nil
     }
 
-    class func fetchMovies(successCallBack: @escaping ([Movie]) -> (), errorCallBack: ((Error?) -> ())?) {
+    class func fetchMovies(successCallBack: @escaping ([Movie]) -> (), _ errorCallBack: ((Error?) -> ())?) {
         let apiKey = "cd4e181e550bd1b9eb536ae2fd16907b"
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
