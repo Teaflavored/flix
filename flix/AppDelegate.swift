@@ -23,11 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nowPlayingNavigationController.tabBarItem.title = "Now Playing"
         let nowPlayingViewController = nowPlayingNavigationController.topViewController as! FlixViewController
         nowPlayingViewController.endpoint = "now_playing"
+        nowPlayingViewController.navigationItem.title = "Now Playing"
 
         let topRatedNavigationController =  storyBoard.instantiateViewController(withIdentifier: "FlixNavigationController") as! UINavigationController
         topRatedNavigationController.tabBarItem.title = "Top Rated"
         let topRatedViewController = topRatedNavigationController.topViewController as! FlixViewController
         topRatedViewController.endpoint = "top_rated"
+        topRatedViewController.navigationItem.title = "Top Rated"
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [nowPlayingNavigationController, topRatedNavigationController]

@@ -11,13 +11,32 @@ import UIKit
 class MovieDetailsViewController: UIViewController {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var overviewLabel: UILabel!
     
+    @IBOutlet weak var detailsScrollingContentView: UIScrollView!
     var movie: Movie!
+    var movieDetailsView: UIView!
+    var movieDetailsViewHeight: CGFloat = CGFloat(0)
+    let movieDetailsGutterSize: CGFloat = CGFloat(15)
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.text = "Movie Title"
+        return label
+    }()
+    let overviewLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.text = "Movie Overview"
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        movieDetailsViewHeight = detailsScrollingContentView.bounds.height / 3
+        let contentWidth = detailsScrollingContentView.bounds.width
+        let contentHeight = detailsScrollingContentView.bounds.height + (movieDetailsViewHeight * 0.5)
+        detailsScrollingContentView.contentSize = CGSize(width: contentWidth, height: contentHeight)
 
         if let posterImageUrl = movie.getPosterImageUrl() {
             backgroundImageView.setImageWith(posterImageUrl)
@@ -25,18 +44,32 @@ class MovieDetailsViewController: UIViewController {
             backgroundImageView.image = nil
         }
 
-        if let title = movie.title {
+        addMovieDetailsView()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    func addMovieDetailsView() -> Void {
+        movieDetailsView = UIView(frame: CGRect(x: movieDetailsGutterSize, y: detailsScrollingContentView.contentSize.height - movieDetailsViewHeight * 1.5, width: detailsScrollingContentView.contentSize.width - movieDetailsGutterSize * 2, height: movieDetailsViewHeight))
+        movieDetailsView.backgroundColor = UIColor(red: 0.0, green:0.0, blue: 0.0, alpha:0.7)
+        detailsScrollingContentView.addSubview(movieDetailsView)
+        addContentToMovieDetailsView()
+    }
+
+    func addContentToMovieDetailsView() -> Void {
+        if let title =  movie.title {
             titleLabel.text = title
         }
 
         if let overview = movie.overview {
             overviewLabel.text = overview
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        movieDetailsView.addSubview(titleLabel)
+        movieDetailsView.addSubview(overviewLabel)
     }
     
 
