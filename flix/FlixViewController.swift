@@ -40,8 +40,11 @@ UISearchResultsUpdating {
         tableView.tableHeaderView = searchController.searchBar
 
         // Setting up pull to refresh
+        refreshControl.layer.zPosition += 1
+        refreshControl.backgroundColor = UIColor.groupTableViewBackground
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
+        tableView.backgroundView?.layer.zPosition -= 1;
 
         // Initial movie fetch
         fetchMovies()
