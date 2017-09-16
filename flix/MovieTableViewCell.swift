@@ -37,6 +37,7 @@ class MovieTableViewCell: UITableViewCell {
         } else {
             overviewLabel.text = "No Summary"
         }
+        overviewLabel.sizeToFit()
 
         if let posterImageUrl = movie.getPosterImageUrl() {
             posterView.setImageWith(posterImageUrl)
