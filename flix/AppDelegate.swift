@@ -21,12 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let nowPlayingNavigationController =  storyBoard.instantiateViewController(withIdentifier: "FlixNavigationController") as! UINavigationController
         nowPlayingNavigationController.tabBarItem.title = "Now Playing"
+        nowPlayingNavigationController.tabBarItem.image = UIImage(named: "now_playing")
         let nowPlayingViewController = nowPlayingNavigationController.topViewController as! FlixViewController
         nowPlayingViewController.endpoint = "now_playing"
         nowPlayingViewController.navigationItem.title = "Now Playing"
 
         let topRatedNavigationController =  storyBoard.instantiateViewController(withIdentifier: "FlixNavigationController") as! UINavigationController
         topRatedNavigationController.tabBarItem.title = "Top Rated"
+        topRatedNavigationController.tabBarItem.image = UIImage(named: "top_rated")
         let topRatedViewController = topRatedNavigationController.topViewController as! FlixViewController
         topRatedViewController.endpoint = "top_rated"
         topRatedViewController.navigationItem.title = "Top Rated"
