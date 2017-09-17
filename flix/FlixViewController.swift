@@ -66,6 +66,14 @@ UISearchResultsUpdating {
         errorLabel.bottomAnchor.constraint(equalTo: (errorLabel.superview?.bottomAnchor)!).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: (errorLabel.superview?.trailingAnchor)!).isActive = true
         errorLabel.textAlignment = NSTextAlignment.center
+        view.addSubview(errorView)
+
+        tableViewTopToErrorViewConstraint = tableView.topAnchor.constraint(equalTo: errorView.bottomAnchor)
+        tableViewTopToLayoutGuideConstraint = tableView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
+        errorViewHeightConstraint = errorView.heightAnchor.constraint(equalToConstant: 30.0)
+        errorViewToTopLayoutGuideConstraint = errorView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
+        errorView.leadingAnchor.constraint(equalTo: (errorView.superview?.leadingAnchor)!).isActive = true
+        errorView.trailingAnchor.constraint(equalTo: (errorView.superview?.trailingAnchor)!).isActive = true
 
         // Initial movie fetch
         fetchMovies()
@@ -99,25 +107,20 @@ UISearchResultsUpdating {
     }
 
     func showErrorMessage() -> Void {
-        view.addSubview(errorView)
-        errorView.leadingAnchor.constraint(equalTo: (errorView.superview?.leadingAnchor)!).isActive = true
-        errorView.trailingAnchor.constraint(equalTo: (errorView.superview?.trailingAnchor)!).isActive = true
-        errorViewToTopLayoutGuideConstraint = errorView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
-        errorViewToTopLayoutGuideConstraint?.isActive = true
+        errorView.isHidden = false
         tableViewTopToLayoutGuideConstraint?.isActive = false
+        errorViewToTopLayoutGuideConstraint?.isActive = true
         tableViewTopToErrorViewConstraint?.isActive = true
         errorViewHeightConstraint?.isActive = true
     }
 
     func hideErrorMessage() -> Void {
-        tableViewTopToErrorViewConstraint = tableView.topAnchor.constraint(equalTo: errorView.bottomAnchor)
-        tableViewTopToLayoutGuideConstraint = tableView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
-        errorViewHeightConstraint = errorView.heightAnchor.constraint(equalToConstant: 30.0)
         errorViewHeightConstraint?.isActive = false
         errorViewToTopLayoutGuideConstraint?.isActive = false
         tableViewTopToErrorViewConstraint?.isActive = false
         tableViewTopToLayoutGuideConstraint?.isActive = true
-        errorView.removeFromSuperview()
+        errorView.isHidden = true
+        view.layoutIfNeeded()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
