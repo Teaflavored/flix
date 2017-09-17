@@ -27,7 +27,7 @@ class MovieDetailsViewController: UIViewController {
     }()
     let overviewLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 10
+        label.numberOfLines = 8
         label.font = UIFont(name: label.font.fontName, size: 14.0)
         label.textColor = UIColor.white
         label.text = "Movie Overview"
@@ -75,13 +75,12 @@ class MovieDetailsViewController: UIViewController {
         
         movieDetailsView.addSubview(titleLabel)
         movieDetailsView.addSubview(overviewLabel)
-        overviewLabel.sizeToFit()
         titleLabel.topAnchor.constraint(equalTo: (titleLabel.superview?.topAnchor)!, constant: 8).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: (titleLabel.superview?.leadingAnchor)!, constant: 8).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: (titleLabel.superview?.trailingAnchor)!, constant: 8).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: (titleLabel.superview?.trailingAnchor)!, constant: -8).isActive = true
         overviewLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
         overviewLabel.leadingAnchor.constraint(equalTo: (overviewLabel.superview?.leadingAnchor)!, constant: 8).isActive = true
-        overviewLabel.trailingAnchor.constraint(equalTo: (overviewLabel.superview?.trailingAnchor)!, constant: 8).isActive = true
+        overviewLabel.trailingAnchor.constraint(equalTo: (overviewLabel.superview?.trailingAnchor)!, constant: -8).isActive = true
     }
     
 
