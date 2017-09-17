@@ -19,10 +19,21 @@ UISearchResultsUpdating {
     let searchController = UISearchController(searchResultsController: nil)
     var content = VHUDContent(.loop(3.0))
 
+    var tableViewTopToLayoutGuideConstraint: NSLayoutConstraint?
+    var tableViewTopToErrorViewConstraint: NSLayoutConstraint?
+    var errorViewHeightConstraint: NSLayoutConstraint?
+    var errorViewToTopLayoutGuideConstraint: NSLayoutConstraint?
     var movies: [Movie] = []
     var filteredMovies: [Movie] = []
     var searchText: String? = ""
     var endpoint: String = "now_playing"
+    let errorView: UIView! = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.gray
+        
+        return view
+    }()
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -46,6 +57,16 @@ UISearchResultsUpdating {
         tableView.insertSubview(refreshControl, at: 0)
         tableView.backgroundView?.layer.zPosition -= 1;
 
+        let errorLabel = UILabel()
+        errorLabel.text = "Could not fetch movies"
+        errorView.addSubview(errorLabel)
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.leadingAnchor.constraint(equalTo: (errorLabel.superview?.leadingAnchor)!).isActive = true
+        errorLabel.topAnchor.constraint(equalTo: (errorLabel.superview?.topAnchor)!).isActive = true
+        errorLabel.bottomAnchor.constraint(equalTo: (errorLabel.superview?.bottomAnchor)!).isActive = true
+        errorLabel.trailingAnchor.constraint(equalTo: (errorLabel.superview?.trailingAnchor)!).isActive = true
+        errorLabel.textAlignment = NSTextAlignment.center
+
         // Initial movie fetch
         fetchMovies()
     }
@@ -61,13 +82,42 @@ UISearchResultsUpdating {
 
     func fetchMovies() -> Void {
         VHUD.show(content)
+        hideErrorMessage()
         Movie.fetchMovies(endpoint, successCallBack: {
             (movies: [Movie]) -> Void in
             self.movies = movies
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
             VHUD.dismiss(1.0)
-        }, nil)
+        }, {
+            error in
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+            VHUD.dismiss(1.0)
+            self.showErrorMessage()
+        })
+    }
+
+    func showErrorMessage() -> Void {
+        view.addSubview(errorView)
+        errorView.leadingAnchor.constraint(equalTo: (errorView.superview?.leadingAnchor)!).isActive = true
+        errorView.trailingAnchor.constraint(equalTo: (errorView.superview?.trailingAnchor)!).isActive = true
+        errorViewToTopLayoutGuideConstraint = errorView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
+        errorViewToTopLayoutGuideConstraint?.isActive = true
+        tableViewTopToLayoutGuideConstraint?.isActive = false
+        tableViewTopToErrorViewConstraint?.isActive = true
+        errorViewHeightConstraint?.isActive = true
+    }
+
+    func hideErrorMessage() -> Void {
+        tableViewTopToErrorViewConstraint = tableView.topAnchor.constraint(equalTo: errorView.bottomAnchor)
+        tableViewTopToLayoutGuideConstraint = tableView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
+        errorViewHeightConstraint = errorView.heightAnchor.constraint(equalToConstant: 30.0)
+        errorViewHeightConstraint?.isActive = false
+        errorViewToTopLayoutGuideConstraint?.isActive = false
+        tableViewTopToErrorViewConstraint?.isActive = false
+        tableViewTopToLayoutGuideConstraint?.isActive = true
+        errorView.removeFromSuperview()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EKe-rv-DHk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EKe-rv-DHk">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.49411764705882355" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -96,7 +96,6 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EKe-rv-DHk" secondAttribute="bottom" id="LzQ-cs-mAk"/>
                             <constraint firstItem="EKe-rv-DHk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mF4-0r-xkZ"/>
                             <constraint firstAttribute="trailing" secondItem="EKe-rv-DHk" secondAttribute="trailing" id="myZ-PE-0cQ"/>
-                            <constraint firstItem="EKe-rv-DHk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="z7o-99-G5W"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Now Playing" id="9lc-2p-5KL"/>
